@@ -35,6 +35,11 @@
 		input.invalid {
 			background-color: #ffdddd;
 		}
+
+		/* Hide the upload form for general users */
+        .hidden {
+            display: none;
+        }
 	</style>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -130,10 +135,11 @@
 			<div class="col-md-8 flex-grow-1 div_right" id="entity-form-container">
 				<div id="status">
 					<div id="status_string">{{photo_upload_status}}</div>
+					<div>TODO: Implement slide-show functionality</div>
 				</div>
 				<p></p>
 
-				<div style="{{upload_form_display}}" id="uploadPhotoFormDiv">
+				<div style="{{upload_form_display}}" id="uploadPhotoFormDiv" class="hidden">
 					<form id="uploadPhotoForm" action="upload" method="post" enctype="multipart/form-data" style="margin-top:-10px;" >
 
 					<label>Photo Name</label>
