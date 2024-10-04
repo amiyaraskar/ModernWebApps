@@ -110,7 +110,13 @@ def logout():
     # Use the "user" variable above to determine which endpoint to redirect to
     # Use assumption 1 to determine whether the user is admin user or general user
 
-    return flask.redirect("/admin")
+    # Check if the user is an admin (non-Gmail address) or general user (Gmail address)
+    if user and not user.endswith("@gmail.com"):
+        app.logger.info("Redirecting to admin login page.")
+        return flask.redirect("/adminindex")
+    else:
+        app.logger.info("Redirecting to general user login page.")
+        return flask.redirect("/index")
 
 
 @app.route("/adminlogin", methods=['POST'])
