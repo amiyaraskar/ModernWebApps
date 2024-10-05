@@ -55,3 +55,44 @@ Portal started...
 127.0.0.1 - - [02/Oct/2024 22:34:16] "[33mGET / HTTP/1.1[0m" 404 -
 127.0.0.1 - - [02/Oct/2024 22:35:27] "[33mGET / HTTP/1.1[0m" 404 -
 127.0.0.1 - - [02/Oct/2024 22:52:53] "[33mGET / HTTP/1.1[0m" 404 -
+Portal started...
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.5.93:5009/ (Press CTRL+C to quit)
+127.0.0.1 - - [05/Oct/2024 01:50:18] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 01:50:18] "GET /static/images/longhorn.png HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 01:50:33] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Oct/2024 01:54:56] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Oct/2024 02:01:01] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Oct/2024 02:07:43] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Oct/2024 02:10:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:10:05] "[36mGET /static/images/longhorn.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Oct/2024 02:10:12] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Oct/2024 02:11:21] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Oct/2024 02:12:42] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:12:42] "GET /static/images/longhorn.png HTTP/1.1" 200 -
+Username:araskar
+Password:pw
+User photos:
+[]
+---
+127.0.0.1 - - [05/Oct/2024 02:12:49] "POST /adminlogin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:12:49] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Oct/2024 02:13:08] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Oct/2024 02:13:13] "[31m[1mGET /userlogin HTTP/1.1[0m" 405 -
+127.0.0.1 - - [05/Oct/2024 02:18:56] "[31m[1mGET /userlogin HTTP/1.1[0m" 405 -
+127.0.0.1 - - [05/Oct/2024 02:18:59] "[31m[1mGET /userlogin HTTP/1.1[0m" 405 -
+127.0.0.1 - - [05/Oct/2024 02:19:18] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+127.0.0.1 - - [05/Oct/2024 02:19:20] "[33mPOST /“userlogin” HTTP/1.1[0m" 404 -
+Portal started...
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.5.93:5009/ (Press CTRL+C to quit)
+127.0.0.1 - - [05/Oct/2024 02:29:36] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:29:36] "[36mGET /static/images/longhorn.png HTTP/1.1[0m" 304 -
+Username:araskar@gmail.com
+User photos:
+[]
+---
+127.0.0.1 - - [05/Oct/2024 02:29:42] "POST /userlogin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:29:42] "GET /static/scripts/photo-portal.js HTTP/1.1" 200 -

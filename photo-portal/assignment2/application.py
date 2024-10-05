@@ -156,25 +156,31 @@ def adminlogin():
 
 @app.route("/userlogin", methods=['POST'])
 def userlogin():
-    gmail = request.form['gmail'].strip()  # Get the Gmail address from the form submission
-    app.logger.info(f"General user logged in with Gmail: {gmail}")
+    username = ""
+    gmail = ""
+    user = ""
+    upload_form_display = ""
+    status = ""
 
-    # Save the Gmail address in the session for future use
-    session['username'] = gmail
+    if 'username' in request.form:
+        gmail = 'username' in request.form
+        username = request.form['username'].strip()
+        user = username
+        app.logger.info("Username:%s", username)
+        upload_form_display = "display:none;"
+        status = "TODO: Implement slide-show functionality"
+    app.logger.info("User photos:")
+    app.logger.info(photos)
+    app.logger.info("---")
 
-    # Set the status message
-    status = "Logged in successfully."
+    flask.session["username"] = user
 
-    # Hide the upload form for general users
-    upload_form_display = "display:none;"
-
-    # Render the landing page (photo-portal.html) with the necessary context
     return render_template('photo-portal.html',
-                           username=gmail,
-                           upload_form_display=upload_form_display,
-                           photo_upload_status=status,
-                           photo_list=photos)
-
+                            upload_form_display=upload_form_display,
+                            username=user,
+                            photo_upload_status=status,
+                            photo_list=photos,
+                            status=status)
 
 
 @app.route("/admin")
