@@ -22,7 +22,6 @@ app = Flask(__name__)
 
 app.secret_key = secrets.token_hex()
 
-
 dictConfig({
     'version': 1,
     'formatters': {'default': {
@@ -81,6 +80,7 @@ def upload_photo():
     filename = secure_filename(file.filename)
     filename = filename.strip()
     app.logger.info("File Name:%s\n", filename)
+    status = ""
 
     if not os.path.exists(PHOTO_FOLDER):
         os.makedirs(PHOTO_FOLDER)
@@ -95,8 +95,10 @@ def upload_photo():
 
     # Requirement 3
     # 3.1 - Set the status and pass that in to photo_upload_status parameter.
+    
+    status = "Photo " + filename + " uploaded successfully."
 
-    return render_template("photo-portal.html", username=username, photo_list=photos)
+    return render_template("photo-portal.html", username=username, photo_list=photos, photo_upload_status=status)
 
 
 @app.route("/logout",methods=['POST'])
@@ -113,11 +115,9 @@ def logout():
     # Check if the user is an admin (non-Gmail address) or general user (Gmail address)
     if user and not user.endswith("@gmail.com"):
         app.logger.info("Redirecting to admin login page.")
-
         return flask.redirect("/admin")
     else:
         app.logger.info("Redirecting to general user login page.")
-
         return flask.redirect("/")
 
 

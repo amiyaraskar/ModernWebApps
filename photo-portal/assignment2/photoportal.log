@@ -184,3 +184,88 @@ Redirecting to general user login page.
 127.0.0.1 - - [05/Oct/2024 02:34:28] "[32mPOST /logout HTTP/1.1[0m" 302 -
 127.0.0.1 - - [05/Oct/2024 02:34:28] "GET / HTTP/1.1" 200 -
 127.0.0.1 - - [05/Oct/2024 02:34:28] "[36mGET /static/images/longhorn.png HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Oct/2024 02:45:04] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:45:04] "[36mGET /static/images/longhorn.png HTTP/1.1[0m" 304 -
+Username:araskar
+Password:p
+User photos:
+[]
+---
+127.0.0.1 - - [05/Oct/2024 02:45:07] "POST /adminlogin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:45:07] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+Inside upload_photo
+File Name:LZD02912.JPG
+
+Date taken:10/05/2024
+Tags:
+127.0.0.1 - - [05/Oct/2024 02:54:06] "POST /upload HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:54:06] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+Portal started...
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.5.93:5009/ (Press CTRL+C to quit)
+127.0.0.1 - - [05/Oct/2024 02:54:35] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:54:35] "[36mGET /static/images/longhorn.png HTTP/1.1[0m" 304 -
+Username:a
+Password:p
+User photos:
+[]
+---
+127.0.0.1 - - [05/Oct/2024 02:54:39] "POST /adminlogin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:54:39] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+Inside upload_photo
+File Name:LZD02912.JPG
+
+Date taken:10/05/2024
+Tags:
+127.0.0.1 - - [05/Oct/2024 02:54:45] "POST /upload HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:54:45] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+Inside upload_photo
+File Name:LZD02912.JPG
+
+Date taken:10/05/2024
+Tags:
+127.0.0.1 - - [05/Oct/2024 02:57:22] "POST /upload HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:57:22] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+127.0.0.1 - - [05/Oct/2024 02:57:28] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:57:28] "[36mGET /static/images/longhorn.png HTTP/1.1[0m" 304 -
+Portal started...
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.5.93:5009/ (Press CTRL+C to quit)
+127.0.0.1 - - [05/Oct/2024 02:57:38] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:57:38] "[36mGET /static/images/longhorn.png HTTP/1.1[0m" 304 -
+Username:a
+Password:p
+User photos:
+[]
+---
+127.0.0.1 - - [05/Oct/2024 02:57:42] "POST /adminlogin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:57:42] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+Inside upload_photo
+File Name:LZD02912.JPG
+
+Date taken:10/05/2024
+Tags:
+127.0.0.1 - - [05/Oct/2024 02:57:47] "POST /upload HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 02:57:47] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+Portal started...
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://192.168.5.93:5009/ (Press CTRL+C to quit)
+127.0.0.1 - - [05/Oct/2024 03:04:17] "GET /admin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 03:04:17] "[36mGET /static/images/longhorn.png HTTP/1.1[0m" 304 -
+Username:a
+Password:a
+User photos:
+[]
+---
+127.0.0.1 - - [05/Oct/2024 03:04:21] "POST /adminlogin HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 03:04:21] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
+Inside upload_photo
+File Name:LZD02912.JPG
+
+Date taken:10/05/2024
+Tags:
+127.0.0.1 - - [05/Oct/2024 03:04:26] "POST /upload HTTP/1.1" 200 -
+127.0.0.1 - - [05/Oct/2024 03:04:26] "[36mGET /static/scripts/photo-portal.js HTTP/1.1[0m" 304 -
