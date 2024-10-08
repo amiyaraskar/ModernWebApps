@@ -13,8 +13,18 @@ function show_photo_details(photo_name, date_taken, tags) {
 
 
 // Requirement 4.3 - Implement the preview_photo method that displays the photo in modal
-function preview_photo(photo_name) {
+function preview_photo(src) {
+  // Get the modal body element where the image will be displayed
+  var modalBody = document.getElementById('image-modal-body');
+  
+  // Construct the image source using the passed photo_name
+  // var imageSrc = PHOTO_FOLDER + '/' + photo_name;  // Assuming PHOTO_FOLDER is available globally or set manually
 
+  // Set the modal body content to include the selected image
+  modalBody.innerHTML = '<img src="' + src + '" class="img-fluid">';
+
+  // Display the modal using Bootstrap's modal function
+  $('#imageModal').modal('show');
 }
 
 
