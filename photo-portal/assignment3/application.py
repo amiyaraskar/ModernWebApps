@@ -52,9 +52,7 @@ dictConfig({
 
 PHOTO_FOLDER = "static/images/photos"
 
-
 app = Flask(__name__)
-
 app.secret_key = secrets.token_hex()
 
 # Ref: https://stackoverflow.com/questions/14888799/disable-console-messages-in-flask-server
@@ -67,7 +65,6 @@ Base = declarative_base()
 db_name = os.getenv("PHOTO_PORTAL_DB","photosdata.db")
 db_url = "sqlite:///" + db_name
 engine = create_engine(db_url, future=True, connect_args={'check_same_thread': False})
-
 DBSession = sessionmaker(bind=engine)
 
 # Class that represents Database table "PhotoData"
@@ -103,8 +100,10 @@ def load_photos():
     session = DBSession()
     photo_list = session.query(PhotoData)
     photos = []
+
     for photo in photo_list:
         found = False
+
         for p in photos:
             if p.name == photo.name:
                 found = True
@@ -123,26 +122,39 @@ def load_photos():
 def get_photos():
     photos = load_photos()
     photo_json_list = []
+
     for photo in photos:
         photo_json_list.append(json.dumps(photo.__dict__))
 
     ret_obj = {}
     ret_obj["photos"] = photo_json_list
+
     return ret_obj
 
 
 # Requirement 2.2
-@app.route("/photos/<photo>/tags")
-def get_tags_for_photo(photo):
-    app.logger.info("Inside get_tags_for_photo:" + photo)
+@app.route("/photos/<photo_name>/tags", methods=["GET"])
+def get_tags_for_photo(photo_name):
+    app.logger.info("Inside get_tags_for_photo: " + photo_name)
 
-    tags_to_return = ""
+    # Database session
+    session = DBSession()
 
-    # Query Database for photo and return the tags
-
-
+    # Query the database for the photo by name
+    photo = session.query(PhotoData).filter_by(name=photo_name).first()
+    
+    # Prepare the response object
     ret_obj = {}
-    ret_obj["tags"] = tags_to_return
+
+    if photo:
+        # Photo found, return the tags
+        ret_obj["tags"] = photo.tags
+        app.logger.info(f"Tags: '{photo_name}': {photo.tags}")
+    else:
+        # Photo not found, return an empty tags field
+        ret_obj["tags"] = ""
+        app.logger.info(f"Tags: ")
+
     return ret_obj
 
 
@@ -227,44 +239,57 @@ def search():
 
 @app.route("/upload", methods=["POST"])
 def upload_photo():
-	app.logger.info("Inside upload_photo")
+    app.logger.info("Inside upload_photo")
 
-	username = ""
-	if "username" in flask.session:
-		username = flask.session['username']
+    username = ""
+    if "username" in flask.session:
+        username = flask.session['username']
 
-	date_taken = request.form["date_taken"].strip()
-	tags = request.form["tags"].strip()
-	file = request.files['photo_name']
-	filename = secure_filename(file.filename)
-	filename = filename.strip()
-	app.logger.info("File Name:%s\n", filename)
-	app.logger.info("Date taken:" + date_taken)
-	app.logger.info("Tags:" + tags)
+    date_taken = request.form["date_taken"].strip()
+    tags = request.form["tags"].strip()
+    file = request.files['photo_name']
+    filename = secure_filename(file.filename)
+    filename = filename.strip()
+    app.logger.info("File Name:%s\n", filename)
+    app.logger.info("Date taken:" + date_taken)
+    app.logger.info("Tags:" + tags)
 
-	if not os.path.exists(PHOTO_FOLDER):
-		os.makedirs(PHOTO_FOLDER)
+    # Initialize the photo upload status message
+    status = ""
 
-	file.save(PHOTO_FOLDER + "/" + filename)
+    # Database session
+    session = DBSession()
 
-	photo_data = PhotoData(name=filename, date_taken=date_taken, tags=tags)
+    # Check if a photo with the same name already exists
+    existing_photo = session.query(PhotoData).filter_by(name=filename).first()
+    if existing_photo:
+        # If the photo exists, set the status message
+        status = f"Photo '{filename}' already exists."
+        app.logger.info(status)
+    else:
+        # Save the photo to the file system
+        if not os.path.exists(PHOTO_FOLDER):
+            os.makedirs(PHOTO_FOLDER)
+        file.save(os.path.join(PHOTO_FOLDER, filename))
 
-	# Requirement 1: Use SQLAlchemy to store the photo
-	# First query to find out if a photo with the name already exists.
-	# Commit the photo only if photo with the name does not exist.
+        # Save the photo information to the database
+        new_photo = PhotoData(name=filename, date_taken=date_taken, tags=tags)
+        session.add(new_photo)
+        session.commit()
 
+        status = "Photo uploaded successfully."
+        app.logger.info(status)
 
+    # Load updated photo list
+    photos = load_photos()
+    slide_show_display = "display:block"
 
-	photos = load_photos()
-
-	slide_show_display = "display:block"
-
-	return render_template("photo-portal.html",
-							username=username,
-							photo_upload_status=status,
-							slide_show_display=slide_show_display,
-							photo_list=photos,
-                            user="admin")
+    return render_template("photo-portal.html",
+                           username=username,
+                           photo_upload_status=status,
+                           slide_show_display=slide_show_display,
+                           photo_list=photos,
+                           user="admin")
 
 
 @app.route("/logout",methods=['POST'])
