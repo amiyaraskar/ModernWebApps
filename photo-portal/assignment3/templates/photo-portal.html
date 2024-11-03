@@ -117,7 +117,8 @@
 
 				<div class="row"> <!-- row2 -->
 					<div>
-						<!-- Requirement 3.1 and 4.1 --> 
+						<!-- Requirement 3.1 and 4.1 -->
+						{% if user == 'admin' %} 
 						<form id="update_delete_form" action="delete_photos" method="POST">
 							<ol id="photo_list">
 								{% for photo in photo_list %}
@@ -135,6 +136,7 @@
 								<button formaction="/update_tags" formmethod="POST" class="btn btn-link">Update Tags</button>
 							</div>
 						</form>
+						{% endif %}
 					</div>
 				</div> <!-- row2 -->
 			</div>
