@@ -112,6 +112,7 @@
 					<button name="search" style="margin-left:10px" onclick="return validate_data()">Search</button>
 					</form>
 				</div>
+
 				<hr>
 
 				<div class="row"> <!-- row2 -->
@@ -119,7 +120,20 @@
 						<!-- Requirement 3.1 and 4.1 --> 
 						<form id="update_delete_form" action="delete_photos" method="POST">
 							<ol id="photo_list">
+								{% for photo in photo_list %}
+									<li>
+										<input type="radio" name="selected_photo" value="{{ photo.name }}">
+										<a href="#" onclick="show_photo_details('{{photo.name}}', '{{photo.date_taken}}', '{{photo.tags}}')"> {{ photo.name }} </a>
+									</li>
+								{% endfor %}
 							</ol>
+
+							<!-- Action links -->
+							<div style="margin-top: 20px;">
+								<button formaction="/delete_photos" formmethod="POST" class="btn btn-link">Delete Photo</button>
+								<hr style="width: 75%; margin-left: 0">
+								<button formaction="/update_tags" formmethod="POST" class="btn btn-link">Update Tags</button>
+							</div>
 						</form>
 					</div>
 				</div> <!-- row2 -->

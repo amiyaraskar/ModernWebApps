@@ -93,7 +93,7 @@ def upload_photo():
     app.logger.info("Date taken:" + date_taken)
     app.logger.info("Tags:" + tags)
 
-    # Requirement 3
+    # 
     # 3.1 - Set the status and pass that in to photo_upload_status parameter.
     status = "Photo " + filename + " uploaded successfully."
 
