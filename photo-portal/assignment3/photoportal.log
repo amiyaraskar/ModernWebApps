@@ -21506,3 +21506,34 @@ User photos:
 User photos:
 [<__main__.Photo object at 0x10fbc6c40>, <__main__.Photo object at 0x10fbc67c0>, <__main__.Photo object at 0x10fbc6820>]
 ---
+Portal started...
+Username:a
+Password:a
+User photos:
+[<__main__.Photo object at 0x10d26f430>, <__main__.Photo object at 0x10d26f460>, <__main__.Photo object at 0x10d26f4c0>]
+---
+Inside update_tags
+Username:a
+Password:a
+User photos:
+[<__main__.Photo object at 0x10d2ac640>, <__main__.Photo object at 0x10d2ac610>, <__main__.Photo object at 0x10d2ac5b0>]
+---
+Inside update_tags
+Portal started...
+Username:a
+Password:a
+User photos:
+[<__main__.Photo object at 0x10f579c70>, <__main__.Photo object at 0x10f579d60>, <__main__.Photo object at 0x10f579820>]
+---
+Portal started...
+Username:a
+Password:a
+User photos:
+[<__main__.Photo object at 0x10d29a8e0>, <__main__.Photo object at 0x10d29a970>, <__main__.Photo object at 0x10d29a910>]
+---
+Portal started...
+Username:a
+Password:a
+User photos:
+[<__main__.Photo object at 0x10d7db880>, <__main__.Photo object at 0x10d7db850>, <__main__.Photo object at 0x10d7db7f0>]
+---

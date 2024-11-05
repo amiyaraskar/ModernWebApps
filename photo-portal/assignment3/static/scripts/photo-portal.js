@@ -67,7 +67,7 @@ function make_photos_call() {
                 photo_anchor.setAttribute("onclick", photo_onclick_handler);
                 photo_anchor_li.appendChild(photo_anchor);
 
-                // document.getElementById("photo_list").appendChild(photo_anchor_li);
+                document.getElementById("photo_list").appendChild(photo_anchor_li);
               } else {
                 // Update the onclick_handler - may be tags have changed;
                 photo_onclick_handler = "show_photo_details('" + photo_name + "','" + photo_date_taken + "','" + photo_tags + "')";

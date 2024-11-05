@@ -65,6 +65,35 @@
 	<!-- Modal to display the tags for update. -->
 	<!-- Requirement 2 --> 
 
+	<!-- Update Tags Modal -->
+	<div class="modal fade" id="updateTagsModal" tabindex="-1" role="dialog" aria-labelledby="updateTagsModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<h5 class="modal-title" id="updateTagsModalLabel">Update Tags</h5>
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			</div>
+			<div class="modal-body">
+			<form id="updateTagsForm" method="post" action="/update_tags">
+				<input type="hidden" name="photo_name" id="modalPhotoName" value="">
+				<div class="form-group">
+				<label for="currentTags">Current Tags</label>
+				<input type="text" class="form-control" id="currentTags" disabled>
+				</div>
+				<div class="form-group">
+				<label for="newTags">New Tags</label>
+				<input type="text" class="form-control" name="tags" id="newTags" required>
+				</div>
+				<button type="submit" class="btn btn-primary">Update Tags</button>
+			</form>
+			<div id="statusMessage" class="mt-3"></div>
+			</div>
+		</div>
+		</div>
+	</div>  
+
 	<div class="container-fluid" style="background-color:transparent">
 		<div class="row">
 			<div class="col">
@@ -122,7 +151,7 @@
 						<form id="update_delete_form" action="delete_photos" method="POST">
 							<ol id="photo_list">
 								{% for photo in photo_list %}
-									<li>
+									<li id="{{photo.name}}-photo-anchor">
 										<input type="radio" name="selected_photo" value="{{ photo.name }}">
 										<a href="#" onclick="show_photo_details('{{photo.name}}', '{{photo.date_taken}}', '{{photo.tags}}')"> {{ photo.name }} </a>
 									</li>

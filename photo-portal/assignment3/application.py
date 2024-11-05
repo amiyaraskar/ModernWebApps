@@ -163,11 +163,27 @@ def get_tags_for_photo(photo_name):
 def update_tags():
     app.logger.info("Inside update_tags")
 
+    photo_name = request.form['photo_name']
+    new_tags = request.form['tags']
+
+    # Database session
+    session = DBSession()
+
+    # Find the photo by name and update tags
+    photo = session.query(PhotoData).filter_by(name=photo_name).first()
+    if photo:
+        photo.tags = new_tags
+        session.commit()
+        status_message = f"Tags successfully updated for {photo_name}"
+    else:
+        status_message = "Photo not found."
 
     photos = load_photos()
 
     return render_template("photo-portal.html",
-                            photo_list=photos)
+                           photo_upload_status=status_message,
+                           photo_list=photos,  # Reload photo list to reflect updates
+                           user="admin")  # Ensure user type is passed correctly
 
 
 # Requirement 3.4
